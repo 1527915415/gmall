@@ -1,0 +1,13 @@
+server:
+  port: 18085
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/wms/*.xml
+  type-aliases-package: com.atguigu.gmall.wms.entity
+  global-config:
+    db-config:
+      id-type: auto #数据库id策略,自增
+feign:
+  sentinel:
+    enabled: true #远程调用
+

@@ -13,10 +13,6 @@
     <name>gmall-wms</name>
     <description>仓库管理系统</description>
 
-    <properties>
-        <java.version>1.8</java.version>
-
-    </properties>
 
     <dependencies>
         <dependency>

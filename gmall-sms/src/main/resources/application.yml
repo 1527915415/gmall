@@ -1,0 +1,12 @@
+server:
+  port: 18083
+mybatis-plus:
+  mapper-locations: classpath:mapper/sms/*.xml
+  type-aliases-package: com.atguigu.gmall.sms.entity
+  global-config:
+    db-config:
+      id-type: auto #数据库id策略,自增
+feign:
+  sentinel:
+    enabled: true #远程调用
+
