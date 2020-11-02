@@ -6,6 +6,7 @@ import com.atguigu.gmall.sms.vo.SkuSaleVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,7 @@ public class SkuBoundsController {
     @Autowired
     private SkuBoundsService skuBoundsService;
     @PostMapping("/sales/save")
+    @Transactional
     public ResponseVo<Object> saveSales(@RequestBody SkuSaleVo skuSaleVo){
         this.skuBoundsService.saveSales(skuSaleVo);
         return ResponseVo.ok();

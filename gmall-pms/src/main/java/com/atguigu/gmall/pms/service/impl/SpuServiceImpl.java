@@ -9,6 +9,7 @@ import com.atguigu.gmall.pms.vo.SkuVo;
 import com.atguigu.gmall.pms.vo.SupAttrValueVo;
 import com.atguigu.gmall.pms.vo.SupVo;
 import com.atguigu.gmall.sms.vo.SkuSaleVo;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,19 +86,21 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
     //指定FileNotFoundException 异常 发生时事务回滚   FileNotFoundException是首检异常
     //@Transactional 所有的受检异常（编译时）都不回滚
     //	所有的不受检异常（运行时异常）都会回滚
-    @Transactional(noRollbackFor = ArithmeticException.class,rollbackFor = FileNotFoundException.class)
+   // @Transactional(noRollbackFor = ArithmeticException.class,rollbackFor = FileNotFoundException.class)
+    @GlobalTransactional
     @Override
     public void bigSave(SupVo spu) {
         //1.保存sup相关
         Long spuId = saveSpu(spu);
         //1.2 保存spu_desc表s
       this.spuDescSrevice.saveSpuDesc(spu,spuId);
-        //int a = 1/0;
+
         //new FileInputStream("xxxxx");
         //1.3 保存spu_attr_value表
         saveBaseAttr(spu, spuId);
         //2. 保存sku相关信息
         saveSkus(spu, spuId);
+        //int a = 1/0;
 
     }
 

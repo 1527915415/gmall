@@ -9,4 +9,8 @@ mybatis-plus:
 feign:
   sentinel:
     enabled: true #远程调用
-
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: gmall-tx-group
