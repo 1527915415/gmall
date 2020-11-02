@@ -47,7 +47,6 @@ public class CategoryController {
     @ApiOperation("分页查询")
     public ResponseVo<PageResultVo> queryCategoryByPage(PageParamVo paramVo){
         PageResultVo pageResultVo = categoryService.queryPage(paramVo);
-
         return ResponseVo.ok(pageResultVo);
     }
 

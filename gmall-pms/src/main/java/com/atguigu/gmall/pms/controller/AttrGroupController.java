@@ -2,6 +2,7 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,18 @@ public class AttrGroupController {
 
     @Autowired
     private AttrGroupService attrGroupService;
+    @ApiOperation("根据三级分类id查询分组及组下的规格参数")
+    @GetMapping("/withattrs/{catId}")
+    public ResponseVo<List<AttrGroupEntity>> queryByCatId(@PathVariable("catId")Long cid){
+        List<AttrGroupEntity> attrGroupEntitys = this.attrGroupService.queryAttrGroupByCatId(cid);
+        return ResponseVo.ok(attrGroupEntitys);
+    }
+    @GetMapping("/category/{cid}")
+    public ResponseVo<List<AttrGroupEntity>> queryArrtGroupById(@PathVariable("cid") Long cid){
+        List<AttrGroupEntity> groupEntities = this.attrGroupService.list(new
+                QueryWrapper<AttrGroupEntity>().eq("category_id", cid));
+        return ResponseVo.ok(groupEntities);
+    }
 
     /**
      * 列表
@@ -41,7 +54,6 @@ public class AttrGroupController {
     @ApiOperation("分页查询")
     public ResponseVo<PageResultVo> queryAttrGroupByPage(PageParamVo paramVo){
         PageResultVo pageResultVo = attrGroupService.queryPage(paramVo);
-
         return ResponseVo.ok(pageResultVo);
     }
 
