@@ -5,15 +5,9 @@ import java.util.List;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.atguigu.gmall.pms.entity.SkuAttrValueEntity;
+import com.atguigu.gamll.pms.entity.SkuAttrValueEntity;
 import com.atguigu.gmall.pms.service.SkuAttrValueService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
@@ -33,7 +27,14 @@ public class SkuAttrValueController {
 
     @Autowired
     private SkuAttrValueService skuAttrValueService;
-
+    @GetMapping("search/attr/{skuId}")
+    public ResponseVo<List<SkuAttrValueEntity>> querySearchSkuAttrValueBySkuIdAndCid(
+            @PathVariable("skuId") Long skuId,
+            @RequestParam("Cid") Long cid
+    ){
+        List<SkuAttrValueEntity> skuAttrValueEntities =  this.skuAttrValueService.querySearchSkuAttrValueBySkuIdAndCid(skuId,cid);
+        return ResponseVo.ok(skuAttrValueEntities);
+    }
     /**
      * 列表
      */

@@ -3,7 +3,7 @@ package com.atguigu.gmall.pms.controller;
 import com.atguigu.gmall.common.bean.PageParamVo;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
-import com.atguigu.gmall.pms.entity.SpuEntity;
+import com.atguigu.gamll.pms.entity.SpuEntity;
 import com.atguigu.gmall.pms.service.SpuService;
 import com.atguigu.gmall.pms.vo.SupVo;
 import io.swagger.annotations.Api;
@@ -34,6 +34,20 @@ public class SpuController {
                                                  @PathVariable("categoryId")Long categoryId){
         PageResultVo pageResultVo = this.spuService.querySupInfo(pageParamVo,categoryId);
         return ResponseVo.ok(pageResultVo);
+    }
+
+    /**
+     * 返回值是当前页的的集合
+     * 专门为es数据导入使用
+     * @param paramVo
+     * @return
+     */
+    @PostMapping ("json")
+    @ApiOperation("分页查询")
+    public ResponseVo<List<SpuEntity>> querySpuByPageJson(@RequestBody PageParamVo paramVo){
+        PageResultVo pageResultVo = spuService.queryPage(paramVo);
+
+        return ResponseVo.ok((List<SpuEntity>)pageResultVo.getList());
     }
 
     /**
