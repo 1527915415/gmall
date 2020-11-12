@@ -1,9 +1,9 @@
 package com.atguigu.gmall.pms.service.impl;
 
-import com.atguigu.gamll.pms.entity.SkuAttrValueEntity;
-import com.atguigu.gamll.pms.entity.SkuImagesEntity;
-import com.atguigu.gamll.pms.entity.SpuAttrValueEntity;
-import com.atguigu.gamll.pms.entity.SpuEntity;
+import com.atguigu.gmall.pms.entity.SkuAttrValueEntity;
+import com.atguigu.gmall.pms.entity.SkuImagesEntity;
+import com.atguigu.gmall.pms.entity.SpuAttrValueEntity;
+import com.atguigu.gmall.pms.entity.SpuEntity;
 import com.atguigu.gmall.pms.feign.GmallSmsClient;
 import com.atguigu.gmall.pms.mapper.SkuMapper;
 import com.atguigu.gmall.pms.service.*;
@@ -13,6 +13,7 @@ import com.atguigu.gmall.pms.vo.SupVo;
 import com.atguigu.gmall.sms.vo.SkuSaleVo;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,6 +81,9 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
     private SkuAttrValueService skuAttrValueService;
     @Autowired
     private GmallSmsClient gmallSmsClient;
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
     //指定ArithmeticException异常 发生时 不用事务回滚  运行yic
     //指定FileNotFoundException 异常 发生时事务回滚   FileNotFoundException是首检异常
     //@Transactional 所有的受检异常（编译时）都不回滚
@@ -98,7 +102,12 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
         saveBaseAttr(spu, spuId);
         //2. 保存sku相关信息
         saveSkus(spu, spuId);
-        //int a = 1/0;
+        try {
+            this.rabbitTemplate.convertAndSend("PMS_SPU_EXCHANGE","item.insert" ,spuId);
+            //int a = 1/0;
+        } catch (Exception e) {
+            log.error("商品消息发送异常,商品 id:" + spu.getId());
+        }
 
     }
 

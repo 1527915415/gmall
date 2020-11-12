@@ -1,7 +1,5 @@
 package com.atguigu.gmall.common.test.algorithm;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 
 public class dome {
     public static void main(String[] args) {

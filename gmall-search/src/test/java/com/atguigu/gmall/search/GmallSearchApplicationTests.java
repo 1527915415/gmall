@@ -1,6 +1,6 @@
 package com.atguigu.gmall.search;
 
-import com.atguigu.gamll.pms.entity.*;
+import com.atguigu.gmall.pms.entity.*;
 import com.atguigu.gmall.common.bean.PageParamVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
 import com.atguigu.gmall.search.feign.GmallPmsClient;
@@ -67,7 +67,7 @@ class GmallSearchApplicationTests {
                         //类型转换
                         goods.setPrice(skuEntity.getPrice().doubleValue());
                         goods.setDefaultImage(skuEntity.getDefaultImage());
-                        goods.setTitle(spuEntity.getCreateTime().toString());
+                        goods.setCrateTime(spuEntity.getCreateTime());
                         //查询库存相关信息
                         ResponseVo<List<WareSkuEntity>> wareResponseVo = this.wmsClient.queryByShuId(skuEntity.getId());
                         List<WareSkuEntity> wereSkuEntitys = wareResponseVo.getData();

@@ -1,6 +1,6 @@
 package com.atguigu.gmall.pms.service.impl;
 
-import com.atguigu.gamll.pms.entity.AttrEntity;
+import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.atguigu.gmall.pms.mapper.AttrMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 import com.atguigu.gmall.pms.mapper.SkuAttrValueMapper;
-import com.atguigu.gamll.pms.entity.SkuAttrValueEntity;
+import com.atguigu.gmall.pms.entity.SkuAttrValueEntity;
 import com.atguigu.gmall.pms.service.SkuAttrValueService;
 import org.springframework.util.CollectionUtils;
 

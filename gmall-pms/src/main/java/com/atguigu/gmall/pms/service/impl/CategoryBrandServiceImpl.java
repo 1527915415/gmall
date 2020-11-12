@@ -8,7 +8,7 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 import com.atguigu.gmall.pms.mapper.CategoryBrandMapper;
-import com.atguigu.gamll.pms.entity.CategoryBrandEntity;
+import com.atguigu.gmall.pms.entity.CategoryBrandEntity;
 import com.atguigu.gmall.pms.service.CategoryBrandService;
 
 

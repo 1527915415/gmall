@@ -1,10 +1,13 @@
 package com.atguigu.gmall.search.pojo;
 
+
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.util.Date;
 import java.util.List;
 @Data
 @Document(indexName = "goods",type = "info",shards = 3,replicas = 2)
@@ -22,10 +25,11 @@ public class Goods {
     @Field(type = FieldType.Keyword,index = false)
     private String subTitle; //副标题
     //排序分页自字段
+   // FixedSecureRandom.Data
     @Field(type = FieldType.Long)
     private  Long sales = 0l; //销量
     @Field(type = FieldType.Date)
-    private Data crateTime; //新品  商品创建时间
+    private Date crateTime; //新品  商品创建时间
     @Field(type = FieldType.Boolean)
     private Boolean store = false; //库存信息
     //过滤所需字段

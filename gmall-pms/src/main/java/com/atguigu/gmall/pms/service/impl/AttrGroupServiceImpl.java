@@ -1,8 +1,8 @@
 package com.atguigu.gmall.pms.service.impl;
 
 
-import com.atguigu.gamll.pms.entity.AttrEntity;
-import com.atguigu.gamll.pms.entity.AttrGroupEntity;
+import com.atguigu.gmall.pms.entity.AttrEntity;
+import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.gmall.pms.mapper.AttrMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

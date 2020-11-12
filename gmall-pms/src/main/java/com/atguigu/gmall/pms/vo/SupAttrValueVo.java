@@ -1,7 +1,7 @@
 package com.atguigu.gmall.pms.vo;
 
 import com.alibaba.nacos.client.naming.utils.CollectionUtils;
-import com.atguigu.gamll.pms.entity.SpuAttrValueEntity;
+import com.atguigu.gmall.pms.entity.SpuAttrValueEntity;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.List;

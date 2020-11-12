@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gamll.pms.entity.SpuDescEntity;
+import com.atguigu.gmall.pms.entity.SpuDescEntity;
 import com.atguigu.gmall.pms.service.SpuDescService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;

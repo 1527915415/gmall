@@ -8,7 +8,7 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 import com.atguigu.gmall.pms.mapper.CommentReplayMapper;
-import com.atguigu.gamll.pms.entity.CommentReplayEntity;
+import com.atguigu.gmall.pms.entity.CommentReplayEntity;
 import com.atguigu.gmall.pms.service.CommentReplayService;
 
 

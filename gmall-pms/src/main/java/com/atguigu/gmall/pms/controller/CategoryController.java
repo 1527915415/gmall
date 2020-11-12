@@ -1,10 +1,14 @@
 package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import com.alibaba.fastjson.JSON;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gamll.pms.entity.CategoryEntity;
+import com.atguigu.gmall.pms.entity.CategoryEntity;
 import com.atguigu.gmall.pms.service.CategoryService;
 import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
@@ -32,6 +36,20 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+    //定义缓存前缀
+    public static final String KEY_PREFIX = "index:categry";
+    private StringRedisTemplate stringRedisTemplate;
+    /**
+     * 根据经一级分类id 查询二级分类和三级分类
+     * @param parentId
+     * @return
+     */
+    @GetMapping("parent/sub/{parentId}")
+    public ResponseVo<List<CategoryEntity>> queryLvl2CatesWithsubByPid(@PathVariable("parentId") Long pid){
+        List<CategoryEntity> categoryEntityList = this.categoryService.queryLvl2CatesWithsubByPid(pid);
+        return ResponseVo.ok(categoryEntityList);
+
+    }
     @ApiOperation("根据父ID查询分类")
     @GetMapping("parent/{parentId}")
     public ResponseVo<List<CategoryEntity>> queryCategory(@PathVariable("parentId") Long parentId ){

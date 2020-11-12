@@ -1,5 +1,6 @@
 package com.atguigu.gmall.pms.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +12,14 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 import com.atguigu.gmall.pms.mapper.CategoryMapper;
-import com.atguigu.gamll.pms.entity.CategoryEntity;
+import com.atguigu.gmall.pms.entity.CategoryEntity;
 import com.atguigu.gmall.pms.service.CategoryService;
 
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEntity> implements CategoryService {
-
+    @Autowired
+    private CategoryMapper categoryMapper;
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<CategoryEntity> page = this.page(
@@ -37,6 +39,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
             wrapper.eq("parent_id",parentId);
         }
         return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    public List<CategoryEntity> queryLvl2CatesWithsubByPid(Long pid) {
+
+        return  this.categoryMapper.queryLvl2CatesWithsubByPid(pid);
+
     }
 
 }

@@ -1,6 +1,6 @@
 package com.atguigu.gmall.pms.service;
 
-import com.atguigu.gamll.pms.entity.SpuDescEntity;
+import com.atguigu.gmall.pms.entity.SpuDescEntity;
 import com.atguigu.gmall.pms.vo.SupVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gmall.common.bean.PageResultVo;
