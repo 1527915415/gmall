@@ -15,5 +15,7 @@ public class GmallUmsApplication {
     public static void main(String[] args) {
         SpringApplication.run(GmallUmsApplication.class, args);
     }
-
+        public void test(){
+            System.out.println("这是test1的分支代码");
+        }
 }
