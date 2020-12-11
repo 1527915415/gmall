@@ -17,5 +17,6 @@ public class GmallUmsApplication {
     }
         public void test(){
             System.out.println("这是test1的分支代码");
+            System.out.println("test2    的第二次修改");
         }
 }
