@@ -15,5 +15,7 @@ public class GmallWmsApplication {
     public static void main(String[] args) {
         SpringApplication.run(GmallWmsApplication.class, args);
     }
-
+        public void test2(){
+            System.out.println("这是test2的分支代码");
+        }
 }
