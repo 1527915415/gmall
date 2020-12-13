@@ -30,6 +30,9 @@ import com.atguigu.gmall.common.bean.PageParamVo;
 @RestController
 @RequestMapping("ums/growthhistory")
 public class GrowthHistoryController {
+    public void test2(){
+        System.out.println("这是测试二");
+    }
 
     @Autowired
     private GrowthHistoryService growthHistoryService;
