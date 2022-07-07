@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 订单项信息
+ * 订单项信息 创建版本
  * 
  * @author hauhau
  * @email 1527915415@qq.com
